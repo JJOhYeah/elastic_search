@@ -16,4 +16,5 @@
 //= require popper
 //= require tether
 //= require bootstrap-sprockets
+//= require jquery.easy-autocomplete
 //= require_tree .
