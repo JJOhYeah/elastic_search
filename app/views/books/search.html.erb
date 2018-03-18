@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col">
+    <h1>Books</h1>
+    <% @books.each do |book| %>
+      <p><%= link_to book.title, book_path(book) %></p>
+    <% end %>
+  </div>
+
+    <div class="col">
+      <h1>Authors</h1>
+      <% @books.each do |book| %>
+        <p><%= link_to book.author, book_path(book) %></p>
+      <% end %>
+    </div>
+
+      <div class="col">
+      <h1>Content</h1>
+      <% @books.each do |book| %>
+        <p><%= link_to book.content[0..30] + "...", book_path(book) %></p>
+      <% end %>
+    </div>
+</div>
+
