@@ -4,8 +4,10 @@ class BooksController < ApplicationController
   end
 
   def search
-    # This searches across all columns for words "q" entered into the seach bar.
-    @books = Book.ransack(title_cont: params[:q], author_cont: params[:q], content_cont: params[:q], m: 'or').result(distinct: true).limit(5)
+    # @books = Book.ransack(title_cont: params[:q], author_cont: params[:q], content_cont: params[:q], m: 'or').result(distinct: true).limit(5)
+    @books = Book.ransack(title_cont: params[:q]).result(distinct: true).limit(5)
+    @author = Book.ransack(author_cont: params[:q]).result(distinct: true).limit(5)
+    @content = Book.ransack(content_cont: params[:q]).result(distinct: true).limit(5)
 
     # Separate search from autocomplete.
 
@@ -13,6 +15,8 @@ class BooksController < ApplicationController
       format.html {}
       format.json {
         @books = @books.limit(5)
+        @author = @author.limit(5)
+        @content = @content.limit(5)
       }
     end
   end

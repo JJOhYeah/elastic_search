@@ -2,6 +2,7 @@ document.addEventListener("turbolinks:load", function() {
   $input = $("[data-behavior='autocomplete']")
 
   var options = {
+    
     getValue: "title",
     url: function(phrase) {
       return "/search.json?q=" + phrase;
@@ -10,6 +11,14 @@ document.addEventListener("turbolinks:load", function() {
       {
         listLocation: "books",
         header: "<strong>Books</strong>",
+      }, 
+      {
+        listLocation: "author",
+        header: "<strong>Author</strong>",
+      },
+      {
+        listLocation: "content",
+        header: "<strong>Content</strong>",
       }
     ],
     list: {
@@ -20,6 +29,10 @@ document.addEventListener("turbolinks:load", function() {
       }
     }
   }
+
+
+
+
 
   $input.easyAutocomplete(options)
 
